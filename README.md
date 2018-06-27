@@ -1,8 +1,13 @@
 # NoteShare
-###### Student application for sharing lecture notes and minutes
+> A student application for sharing lecture notes and minutes.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Features
+- File uploading
+- Add comments to other students notes
+- Drag and drop interface
+- More to be added soon...
+
+
 
 Things you may want to cover:
 
