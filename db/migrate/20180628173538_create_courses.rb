@@ -4,6 +4,9 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :code
       t.decimal :credits
+      t.text :description
+      t.text :main_image
+      t.text :thumbnail
 
       t.timestamps
     end
