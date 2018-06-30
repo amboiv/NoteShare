@@ -1,0 +1,9 @@
+<h1>Courses</h1>
+
+<% @courses.each do |c| %>
+    <p><%= c.name %></p>
+    <p><%= c.code %></p>
+    <p><%= c.credits %></p>
+    <p><%= c.description %></p>
+    <%= image_tag c.thumbnail %>
+<% end %>
