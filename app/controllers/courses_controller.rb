@@ -7,8 +7,8 @@ class CoursesController < ApplicationController
         @course = Course.new
     end
 
-    # POST /notes
-    # POST /notes.json
+    # POST /courses
+    # POST /courses.json
     def create
         @course = Course.new(params.require(:course).permit(:name, :code, :credits, :description))
 
@@ -18,6 +18,25 @@ class CoursesController < ApplicationController
                 format.json { render :show, status: :created, location: @course }
             else
                 format.html { render :new }
+                format.json { render json: @course.errors, status: :unprocessable_entity }
+            end
+        end
+    end
+
+    def edit
+        @course = Course.find(params[:id]) 
+    end
+
+    # PATCH/PUT /courses/1
+    # PATCH/PUT /courses/1.json
+    def update
+        @course = Course.find(params[:id]) 
+        respond_to do |format|
+            if @course.update(params.require(:course).permit(:name, :code, :credits, :description))
+                format.html { redirect_to courses_path, notice: 'The course info was successfully updated.' }
+                format.json { render :show, status: :ok, location: @course }
+            else
+                format.html { render :edit }
                 format.json { render json: @course.errors, status: :unprocessable_entity }
             end
         end
