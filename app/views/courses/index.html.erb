@@ -3,7 +3,7 @@
 <%= link_to  "Create a New Course", new_course_path %>
 <hr>
 <% @courses.each do |c| %>
-    <p><%= link_to c.name, course_path(c.id) %></p>
+    <p><%= link_to c.name, course_show_path(c.id) %></p>
     <p><%= c.code %></p>
     <p><%= c.credits %></p>
     <p><%= c.description %></p>
