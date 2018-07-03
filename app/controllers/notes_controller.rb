@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   # GET /notes
   # GET /notes.json
@@ -61,10 +61,20 @@ class NotesController < ApplicationController
     end
   end
 
+  def toggle_status
+    if @note.cannotComment? || @note.privateNote?
+      @note.canComment!
+    elsif @note.canComment?
+      @note.cannotComment!
+    end
+    redirect_to notes_url, notice: 'Note status has been changed to: ' + @note.status
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
-      @note = Note.find(params[:id])
+      @note = Note.friendly.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
