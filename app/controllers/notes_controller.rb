@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   # GET /notes
   # GET /notes.json
@@ -59,6 +59,15 @@ class NotesController < ApplicationController
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_status
+    if @note.cannotComment? || @note.privateNote?
+      @note.canComment!
+    elsif @note.canComment?
+      @note.cannotComment!
+    end
+    redirect_to notes_url, notice: 'Note status has been changed to: ' + @note.status
   end
 
   private
