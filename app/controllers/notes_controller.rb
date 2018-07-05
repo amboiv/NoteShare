@@ -7,6 +7,10 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
+  def not_commentable
+    @not_commentable_notes = Note.not_commentable
+  end
+
   # GET /notes/1
   # GET /notes/1.json
   def show

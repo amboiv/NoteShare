@@ -6,6 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+8.times do |course|
+    Course.create!(
+        name: "Course number #{course}",
+        code: "STUD#{course}",
+        credits: 7.5,
+        description: "This course can be taken at WOACT",
+        main_image: "https://placeholdit.co//i/600x300?",
+        thumbnail: "https://placeholdit.co//i/300x150?"
+    )
+end
+
+puts "8 courses created"
+
 10.times do |note|
     Note.create!(
         title: "Note from lecture at #{Date.current}",
@@ -21,21 +34,9 @@
             cillum dolore eu fugiat nulla pariatur. 
             Excepteur sint occaecat cupidatat non 
             proident, sunt in culpa qui officia 
-            deserunt mollit anim id est laborum." 
+            deserunt mollit anim id est laborum.",
+        course_id: Course.find(Course.pluck(:id).sample).id
     )
 end
 
 puts "10 notes created"
-
-8.times do |course|
-    Course.create!(
-        name: "Course number #{course}",
-        code: "STUD#{course}",
-        credits: 7.5,
-        description: "This course can be taken at WOACT",
-        main_image: "https://placeholdit.co//i/600x300?",
-        thumbnail: "https://placeholdit.co//i/300x150?"
-    )
-end
-
-puts "8 courses created"
