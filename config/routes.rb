@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :education_programs
   resources :courses, except: [:show]
   get 'course/:id', to: 'courses#show', as: 'course_show'
   get 'about', to: 'pages#about'
