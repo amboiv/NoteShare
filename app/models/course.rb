@@ -3,6 +3,7 @@ class Course < ApplicationRecord
     validates_presence_of :name, :code, :credits, :main_image, :thumbnail
 
     has_many :notes
+    belongs_to :education_program
 
 
     after_initialize :set_defaults

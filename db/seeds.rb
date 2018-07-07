@@ -6,20 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-8.times do |course|
-    Course.create!(
+
+
+number_of_courses = 8
+number_of_notes = 10
+
+education_program_titles = ["Programmering", "Interaktivt design", "E-business"]
+number_of_education_programs = education_program_titles.length
+
+number_of_education_programs.times do |education_program|
+    EducationProgram.create!(
+        title: education_program_titles[education_program],
+        badge: "https://placeholdit.co//i/50x50"
+    )
+end
+
+puts "#{number_of_education_programs} education program created"
+
+number_of_courses.times do |course|
+    EducationProgram.last.courses.create!(
         name: "Course number #{course}",
         code: "STUD#{course}",
         credits: 7.5,
         description: "This course can be taken at WOACT",
-        main_image: "https://placeholdit.co//i/600x300?",
-        thumbnail: "https://placeholdit.co//i/300x150?"
+        main_image: "https://placeholdit.co//i/600x300",
+        thumbnail: "https://placeholdit.co//i/300x150",
     )
 end
 
-puts "8 courses created"
+puts "#{number_of_courses} courses created"
 
-10.times do |note|
+number_of_notes.times do |note|
     Note.create!(
         title: "Note from lecture at #{Date.current}",
         body: "Lorem ipsum dolor sit amet, 
@@ -39,4 +56,4 @@ puts "8 courses created"
     )
 end
 
-puts "10 notes created"
+puts "#{number_of_notes} notes created"
