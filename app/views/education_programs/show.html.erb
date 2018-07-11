@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @education_program.title %>
+</p>
+
+<%= link_to 'Edit', edit_education_program_path(@education_program) %> |
+<%= link_to 'Back', education_programs_path %>
+
+<h2>Courses taught in <%= @education_program.title %>:</h2>
+<% @education_program.courses.each do |c| %>
+  <p><%= c.name %></p>
+<% end %>
