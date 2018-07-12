@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :education_programs
   resources :courses, except: [:show]
   get 'course/:id', to: 'courses#show', as: 'course_show'
