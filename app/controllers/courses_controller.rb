@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+    access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update] },
+          instructor: :all
+
     def index
         @courses = Course.all
     end
