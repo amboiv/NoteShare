@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
     # POST /courses
     # POST /courses.json
     def create
-        @course = Course.new(params.require(:course).permit(:name, :code, :credits, :description))
+        @course = Course.new(course_params)
 
         respond_to do |format|
             if @course.save
@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
     def update
         @course = Course.find(params[:id]) 
         respond_to do |format|
-            if @course.update(params.require(:course).permit(:name, :code, :credits, :description))
+            if @course.update(course_params)
                 format.html { redirect_to courses_path, notice: 'The course info was successfully updated.' }
                 format.json { render :show, status: :ok, location: @course }
             else
@@ -60,6 +60,18 @@ class CoursesController < ApplicationController
             format.html { redirect_to courses_url, notice: 'The Course was successfully deleted.' }
             format.json { head :no_content }
         end
+    end
+
+    private
+
+    def course_params
+        params.require(:course).permit(
+            :name, 
+            :code, 
+            :credits, 
+            :description,
+            :thumbnail
+        )
     end
 
 end
