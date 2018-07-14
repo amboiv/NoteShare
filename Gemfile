@@ -59,3 +59,5 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 
 gem 'petergate', '~> 1.8', '>= 1.8.1'
+
+gem 'solargraph', '~> 0.23.4'
