@@ -3,4 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
     background-color: azure;
+    margin-top: 6%;
+}
+
+.top {
+    background: linear-gradient(pink 85%, burlywood);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+    padding: 5px 10px;
 }

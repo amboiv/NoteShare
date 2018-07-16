@@ -1,1 +1,10 @@
-
+.top {
+    background: rgb(241, 221, 194);
+    /* background: linear-gradient(burlywood 95%, azure); */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+    padding: 5px 10px;
+}

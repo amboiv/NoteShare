@@ -1,32 +1,6 @@
 <h1>Create a new course</h1>
 
-<%= form_with(model: @course, local: true) do |form| %>
+<%= render 'form', course: @course %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :code %>
-    <%= form.text_field :code %>
-  </div>
-  <div class="field">
-    <%= form.label :credits %>
-    <%= form.text_field :credits %>
-  </div>
+<%= link_to 'Back', courses_path %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :thumbnail %>
-    <%= form.text_area :thumbnail %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
