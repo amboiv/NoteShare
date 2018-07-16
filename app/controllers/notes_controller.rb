@@ -7,6 +7,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
+    @page_title = "NoteShare | Notes"
     @notes = Note.all
   end
 
@@ -17,6 +18,8 @@ class NotesController < ApplicationController
   # GET /notes/1
   # GET /notes/1.json
   def show
+    @page_title = @note.title
+    @seo_keywords = @note.body
   end
 
   # GET /notes/new
