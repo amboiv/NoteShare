@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+    layout "courses"
+
     access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update] },
           instructor: :all
 
