@@ -1,2 +1,5 @@
 <h1>Pages#contact</h1>
-<p>Find me in app/views/pages/contact.html.erb</p>
+<p><%= number_to_phone(123456789, pattern: /(\d{3})(\d{3})(\d{3})$/, country_code: 47, delimiter: " ") %> </p>
+<p>number to currency <%= number_to_currency(150) %> </p>
+<p>number to percentage <%= number_to_percentage(15) %> </p>
+<p>number with delimiter <%= number_with_delimiter(155464652) %> </p>

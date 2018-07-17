@@ -1,5 +1,6 @@
 <tr>
     <td><%= note.title %></td>
+    <td>Posted <%= distance_of_time_in_words(note.created_at, Time.now) %> ago</td>
     <td><%= note.body %></td>
     <td><%= link_to note.status, toggle_status_note_path(note) %></td>
     <td><%= link_to 'Show', note if logged_in?(:student, :instructor) %></td>
