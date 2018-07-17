@@ -10,4 +10,9 @@ class Note < ApplicationRecord
     def self.not_commentable
         where(status: 'cannotComment')
     end
+
+    def self.featured_notes
+        limit(2)
+    end
+
 end

@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+    before_action :set_course, only: [:show, :edit, :update, :destroy]
     layout "courses"
 
     access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update] },
@@ -9,7 +10,6 @@ class CoursesController < ApplicationController
     end
 
     def show
-        @course = Course.find(params[:id])
     end
 
     def new
@@ -33,13 +33,11 @@ class CoursesController < ApplicationController
     end
 
     def edit
-        @course = Course.find(params[:id]) 
     end
 
     # PATCH/PUT /courses/1
     # PATCH/PUT /courses/1.json
     def update
-        @course = Course.find(params[:id]) 
         respond_to do |format|
             if @course.update(course_params)
                 format.html { redirect_to courses_path, notice: 'The course info was successfully updated.' }
@@ -55,8 +53,6 @@ class CoursesController < ApplicationController
     # DELETE /notes/1
     # DELETE /notes/1.json
     def destroy
-        @course = Course.find(params[:id])
-
         @course.destroy
         respond_to do |format|
             format.html { redirect_to courses_url, notice: 'The Course was successfully deleted.' }
@@ -65,6 +61,10 @@ class CoursesController < ApplicationController
     end
 
     private
+
+    def set_course
+        @course = Course.find(params[:id])  
+    end
 
     def course_params
         params.require(:course).permit(
