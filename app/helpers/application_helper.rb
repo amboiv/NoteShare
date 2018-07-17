@@ -7,4 +7,11 @@ module ApplicationHelper
             link_to "Log out", destroy_user_session_path, method: :delete
         end
     end
+
+    def source_helper(layout_name)
+        if session[:source]
+            greeting = "Thanks for visiting from #{session[:source]}, this page is using the #{layout_name} layout"
+            content_tag(:p, greeting, class: "source_greeting")
+        end
+    end
 end

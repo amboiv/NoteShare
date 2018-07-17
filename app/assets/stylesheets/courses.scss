@@ -7,7 +7,10 @@ body {
 }
 
 .top {
-    background: linear-gradient(pink 85%, burlywood);
+    background-color: pink;
+    //background: linear-gradient(rgb(243, 221, 225) 5%, pink 90%, rgb(243, 221, 225) );
+    border-top: 2px solid rgb(248, 217, 222);
+    border-bottom: 2px solid rgb(248, 217, 222);
     position: fixed;
     top: 0;
     left: 0;
