@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/amboiv/amb_view_tool
+  revision: c8c6d819937f91944bbc7d13a305a79c5af8371b
+  specs:
+    amb_view_tool (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -237,6 +243,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amb_view_tool!
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.1.1)
   byebug

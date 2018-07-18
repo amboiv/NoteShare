@@ -14,4 +14,8 @@ module ApplicationHelper
             content_tag(:p, greeting, class: "source_greeting")
         end
     end
+
+    def copyright_generator
+        AmbViewTool::Renderer.copyright 'amb', 'All rights rightfully reserved'
+    end
 end
