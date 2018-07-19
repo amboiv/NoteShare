@@ -1,5 +1,5 @@
 module ApplicationHelper
-    def login_helper(classes_string)
+    def login_helper(classes_string = "")
         if current_user.is_a?(GuestUser)
             (link_to "Register", new_user_registration_path, class: classes_string + " " + is_active?(new_user_registration_path)) +
             (link_to "Login", new_user_session_path, class: classes_string + " " + is_active?(new_user_session_path))
