@@ -14,21 +14,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class="text-center">
+      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-    <%= render "shared/navbar", location: 'top' %>
-    <%= login_helper %>
+          <%= render "shared/application_navbar" %>
+          <%= login_helper %>
 
-    <%= yield %>
-    <footer class="mastfoot mt-auto">
-       <div class="inner">
-        <%= copyright_generator %>
-        </div>
-    </footer>
+          <%= yield %>
+          <footer class="mastfoot mt-auto">
+            <div class="inner">
+              <%= copyright_generator %>
+              </div>
+          </footer>
 
-    <%= source_helper("application") %>
-
+          <%= source_helper("application") %>
+      </div>
   </body>
 </html>

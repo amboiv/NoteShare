@@ -15,6 +15,10 @@ module ApplicationHelper
         end
     end
 
+    def is_active?(path)
+        request.path == path ? "active" : ""
+    end
+    
     def copyright_generator
         AmbViewTool::Renderer.copyright 'amb', 'All rights rightfully reserved'
     end

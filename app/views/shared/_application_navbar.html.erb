@@ -1,0 +1,13 @@
+<header class="masthead mb-auto">
+    <div class="inner">
+        <h3 class="masthead-brand">NoteShare</h3>
+        <nav class="nav nav-masthead justify-content-center">
+            <%= link_to "Home", root_path, class: "nav-link " + is_active?(root_path) %>
+            <%= link_to "About", about_path, class: "nav-link " + is_active?(about_path) %>
+            <%= link_to "Contact", contact_path, class: "nav-link " + is_active?(contact_path) %>
+            <%= link_to "Notes", notes_path, class: "nav-link " + is_active?(notes_path) %>
+            <%= link_to "Courses", courses_path, class: "nav-link " + is_active?(courses_path) %>
+            <%= link_to "Education Programs", education_programs_path, class: "nav-link " + is_active?(education_programs_path) %>
+        </nav>
+    </div>
+</header>
