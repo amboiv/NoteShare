@@ -14,6 +14,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :name
+  has_many :notes
   
   def first_name
     self.name.split.first
