@@ -1,0 +1,25 @@
+<div class="row mb-2">        
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-200">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary">TODO:CODETK1100</strong>
+        <h3 class="mb-0">
+          <%= link_to 'Post a new note', new_note_path if logged_in?(:student, :instructor) %>
+        </h3>
+        <p class="card-text mb-auto">Add a new note to the collection.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-200">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-success">TODO:CODETK1100</strong>
+        <h3 class="mb-0">
+          <a class="text-dark" href="#">TODO: The course</a>
+        </h3>
+        <p class="card-text mb-auto">See curriculum.</p>
+      </div>
+    </div>
+  </div>
+</div> <!-- /.cards -->
