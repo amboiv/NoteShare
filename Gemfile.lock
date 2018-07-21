@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/amboiv/amb_view_tool
-  revision: c8c6d819937f91944bbc7d13a305a79c5af8371b
+  revision: 040e7689dc2af1bad5c1878fb09c501c1e5f1ff5
   specs:
     amb_view_tool (0.1.0)
 
@@ -97,6 +97,18 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     kramdown (1.17.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -252,6 +264,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari (~> 1.1, >= 1.1.1)
   listen (>= 3.0.5, < 3.2)
   petergate (~> 1.8, >= 1.8.1)
   pg (>= 0.18, < 2.0)

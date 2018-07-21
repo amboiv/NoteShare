@@ -1,15 +1,14 @@
 <div class="col-md-8 blog-main">
   <h3 class="pb-3 mb-4 font-italic border-bottom">
-    TODO: Show the course the notes belongs to!! <%= @notes.first.course.name %> 
+    TODO: Show the course Notes belongs to!! <%= @notes.first.course.name %> 
   </h3>
   
   <%= render 'shared/notes_cards' %>
   
-  <%= render @notes %>  
+  <%= paginate @notes %> 
 
-  <nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">Older</a>
-    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-  </nav>
+  <%= render @notes %> 
+
+  <%= paginate @notes %> 
 
 </div><!-- /.blog-main -->

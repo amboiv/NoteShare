@@ -9,7 +9,7 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @page_title = "NoteShare | Notes"
-    @notes = Note.all
+    @notes = Note.page(params[:page]).per(10)
   end
 
   def not_commentable

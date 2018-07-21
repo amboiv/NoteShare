@@ -14,10 +14,9 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render 'shared/notes_navbar' %>
-    </div>
 
+    <%= render 'shared/notes_masthead' %>
+    
     <main role="main" class="container">
       <div class="row"> 
 
@@ -27,13 +26,7 @@
       </div>
     </main>
     
-    <footer class="blog-footer">
-      <%= render "shared/navbar", location: 'bottom' %>
-      <%= source_helper("notes") %>
-      <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
+    <%= render 'shared/notes_footer' %>
+    
   </body>
 </html>
