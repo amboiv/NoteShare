@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_171819) do
+ActiveRecord::Schema.define(version: 2018_07_21_211640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,12 @@ ActiveRecord::Schema.define(version: 2018_07_20_171819) do
     t.text "thumbnail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "education_program_id"
-    t.index ["education_program_id"], name: "index_courses_on_education_program_id"
+  end
+
+  create_table "courses_education_programs", id: false, force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "education_program_id", null: false
+    t.index ["education_program_id", "course_id"], name: "index_courses_eps_on_ep_id_and_course_id"
   end
 
   create_table "education_programs", force: :cascade do |t|
@@ -77,11 +81,13 @@ ActiveRecord::Schema.define(version: 2018_07_20_171819) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "roles"
+    t.bigint "education_program_id"
+    t.index ["education_program_id"], name: "index_users_on_education_program_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "courses", "education_programs"
   add_foreign_key "notes", "courses"
   add_foreign_key "notes", "users"
+  add_foreign_key "users", "education_programs"
 end
