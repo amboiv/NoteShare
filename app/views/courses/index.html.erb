@@ -1,7 +1,11 @@
 <h1>Courses</h1>
-
 <%= link_to  "Create a New Course", new_course_path %>
-<hr>
-<%# The colllection-to-partial mapping actually happens automatically when following the @courses/_course convention. %>
-<%# This explicit call is only for practicing how it's done when naming convention can't be followed for some reason. %>
-<%= render partial: 'course', collection: @courses %>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <%# The colllection-to-partial mapping actually happens automatically when following the @courses/_course convention. %>
+            <%# This explicit call is only for practicing how it's done when naming convention can't be followed for some reason. %>
+            <%= render partial: 'course', collection: @courses %>
+        </div>
+    </div>
+</div>
