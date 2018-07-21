@@ -3,6 +3,8 @@
     TODO: Show the course the notes belongs to!! <%= @notes.first.course.name %> 
   </h3>
   
+  <%= render 'shared/notes_cards' %>
+  
   <%= render @notes %>  
 
   <nav class="blog-pagination">
@@ -11,6 +13,3 @@
   </nav>
 
 </div><!-- /.blog-main -->
-
-
-<p id="notice"><%= notice %></p>

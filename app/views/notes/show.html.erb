@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-8 blog-main">
+  <h2 class="pb-3 mb-4 font-italic border-bottom">
+    <%= @note.title %>
+    </h2>
+  <%= link_to 'Edit', edit_note_path(@note) if current_user == @note.user %>
+  <p>
+    <%= @note.body %>
+  </p>
+  <p id="notice" class="text-success"><%= notice %></p>
+</div><!-- /.blog-main -->
 
-<p>
-  <strong>Title:</strong>
-  <%= @note.title %>
-</p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @note.body %>
-</p>
 
-<%= link_to 'Edit', edit_note_path(@note) if logged_in?(:student) %> |
-<%= link_to 'Back', notes_path %>
+
+
+
+
+
