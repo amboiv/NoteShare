@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   validates_presence_of :name
   has_many :notes
+  belongs_to :education_program, optional: true
   
   def first_name
     self.name.split.first
