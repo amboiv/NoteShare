@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'log_out' }
   resources :education_programs
-  resources :courses, except: [:show]
+  resources :courses, except: [:show] do
+    put :sort, on: :collection
+  end
 
   get 'course/:id', to: 'courses#show', as: 'course_show'
   

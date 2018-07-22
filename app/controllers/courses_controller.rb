@@ -9,6 +9,13 @@ class CoursesController < ApplicationController
         @courses = Course.by_position
     end
 
+    def sort
+        params[:order].each do |key, value|
+            Course.find(value[:id]).update(position: value[:position])
+        end
+        render body: nil
+    end
+
     def show
     end
 
