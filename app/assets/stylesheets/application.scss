@@ -56,7 +56,7 @@ body {
 }
 
 .cover-container {
-  max-width: 58em;
+  max-width: 68em;
 }
 
 
@@ -126,6 +126,14 @@ body {
  * Custom styles
  */
 
+.app-navbar span {
+  margin-right: 1rem;
+}
+
+.button-collection-div {
+  text-align: right;
+}
+
 .card-body {
   color: #333;
   text-align: left;
@@ -135,9 +143,6 @@ body {
   color: #333;
 }
 
-.button-collection-div {
-  text-align: right;
-}
 
 .login > .card {
   width: 22rem;

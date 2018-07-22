@@ -22,4 +22,30 @@ module ApplicationHelper
     def copyright_generator
         AmbViewTool::Renderer.copyright 'amb', 'All rights rightfully reserved'
     end
+
+    def navbar_links
+        [
+            {
+                path: root_path,
+                title: 'Home',
+            },
+            {
+                path: courses_path,
+                title: 'My Courses',
+            },
+            {
+                path: education_programs_path,
+                title: 'Education Programs',
+            },
+        ]
+    end
+
+    def navbar_helper (classes, tag_type)
+        navbar_content = ''
+        navbar_links.each do |link|
+            navbar_content << "<#{tag_type}><a href='#{link[:path]}' class='#{classes} #{is_active?(link[:path])}'>#{link[:title]}</a></#{tag_type}>"
+        end
+        navbar_content.html_safe  
+    end
+
 end
