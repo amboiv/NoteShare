@@ -1,8 +1,25 @@
-<%= image_tag @course.main_image %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <%= image_tag @course.main_image %>
+        </div>
+        <div class="col-md-5">
+            <h1><%= @course.name %></h1>
+            <hr>
 
-<h1><%= @course.name %></h1>
+            <em><strong>Course Code:</strong> <%= @course.code %></em><br>
+            <em><strong>Course Credits:</strong> <%= @course.credits %></em>
+            <hr>
+            <p><%= @course.description %></p>
+            <%= link_to 'To Notes', notes_in_course_path(chosen_course_id: @course.id) %>
+        </div>
+    </div>
+</div>
 
-<em><strong>Course Code:</strong> <%= @course.code %></em><br>
-<em><strong>Course Credits:</strong> <%= @course.credits %></em>
 
-<p><%= @course.description %></p>
+
+
+
+
+
+
