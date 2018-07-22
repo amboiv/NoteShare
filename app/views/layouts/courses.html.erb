@@ -9,14 +9,19 @@
 
     <meta name="keywords" content="<%= @seo_keywords %>"/>
 
-    <%= stylesheet_link_tag    'courses', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'notes', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'shared/courses_navbar' %> 
+  
+     
     
     <main role="main">
+    <div class="container">
+      <%= render 'shared/notes_navbar' %>
+    </div>
+     
       <%= render 'shared/courses_masthead' unless logged_in?(:instructor) %>
       <%= yield %>
     </main>
