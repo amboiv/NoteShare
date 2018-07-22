@@ -17,7 +17,7 @@
     <%= render 'shared/courses_navbar' %> 
     
     <main role="main">
-      <%= render 'shared/courses_masthead' %>
+      <%= render 'shared/courses_masthead' unless logged_in?(:instructor) %>
       <%= yield %>
     </main>
 
