@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Courses</h1>
         <%= link_to  "Create a New Course", new_course_path %>
-        <div class="row">
+        <div class="row sortable">
             <%# The colllection-to-partial mapping actually happens automatically when following the @courses/_course convention. %>
             <%# This explicit call is only for practicing how it's done when naming convention can't be followed for some reason. %>
             <%= render partial: 'course', collection: @courses %>
