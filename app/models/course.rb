@@ -12,4 +12,8 @@ class Course < ApplicationRecord
         self.main_image ||= Placeholder.generate_image(width: 600, height: 300)
         self.thumbnail ||= Placeholder.generate_image(width: 300, height: 150)
     end
+
+    def self.by_position
+        order("position ASC")
+    end
 end

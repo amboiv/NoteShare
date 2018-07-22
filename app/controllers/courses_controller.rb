@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
           instructor: :all
 
     def index
-        @courses = Course.all
+        @courses = Course.by_position
     end
 
     def show
