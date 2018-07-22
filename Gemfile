@@ -67,7 +67,9 @@ gem 'solargraph', '~> 0.23.4'
 
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 gem 'amb_view_tool', git: 'https://github.com/amboiv/amb_view_tool'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+
