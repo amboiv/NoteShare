@@ -2,8 +2,8 @@ class CoursesController < ApplicationController
     before_action :set_course, only: [:show, :edit, :update, :destroy]
     layout "courses"
 
-    access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update] },
-          instructor: :all
+    access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update, :sort] },
+          instructor: :all, student: { except: [:destroy, :new, :create, :edit, :update] }
 
     def index
         @courses = Course.by_position
