@@ -13,6 +13,9 @@ class Course < ApplicationRecord
         self.thumbnail ||= Placeholder.generate_image(width: 300, height: 150)
     end
 
+    mount_uploader :thumbnail, CourseUploader
+    mount_uploader :main_image, CourseUploader
+
     def self.by_position
         order("position ASC")
     end

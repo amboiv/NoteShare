@@ -79,7 +79,8 @@ class CoursesController < ApplicationController
             :code, 
             :credits, 
             :description,
-            :thumbnail
+            :thumbnail,
+            :main_image
         )
     end
 
