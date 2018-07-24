@@ -29,12 +29,10 @@
     </div>
 
     <div class="col-md-12">    
-        
+      <h2>Add Course To Education Programs</h2>
       <div class="form-group">
-        <%= form.label :education_program %>
         <%= form.collection_select(:education_program_ids, EducationProgram.all, :id, :title) %>
-    </div>
-       
+      </div>
     </div>
 
     <div class="col-md-12">
