@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-7">
-            <%= image_tag @course.main_image, width: '100%' if @course.main_image.attached? %>
+            <%= image_tag course_image(@course.main_image, 'main_image'), width: '100%' %>
         </div>
         <div class="col-md-5">
             <h1><%= @course.name %></h1>
