@@ -5,6 +5,8 @@ class Course < ApplicationRecord
     has_many :notes
     #belongs_to :education_program, optional: true
     has_many :education_programs, through: :courses_education_programs
+    has_one_attached :thumbnail
+    has_one_attached :main_image
 
 
     after_initialize :set_defaults
@@ -13,8 +15,8 @@ class Course < ApplicationRecord
         self.thumbnail ||= Placeholder.generate_image(width: 300, height: 150)
     end
 
-    mount_uploader :thumbnail, CourseUploader
-    mount_uploader :main_image, CourseUploader
+    #mount_uploader :thumbnail, CourseUploader
+    #mount_uploader :main_image, CourseUploader
 
     def self.by_position
         order("position ASC")

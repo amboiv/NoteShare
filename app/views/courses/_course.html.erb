@@ -1,6 +1,6 @@
 <div class="col-md-4" data-id="<%= course.id %>">
 	<div class="card mb-4 box-shadow">
-		<%= image_tag course.thumbnail.to_s, height:200 unless course.thumbnail.nil? %>
+		<%= image_tag course.thumbnail, height:200 if course.thumbnail.attached? %>
 		
 		<div class="card-body">
 			<p class="card-text"><%= link_to course.name, notes_in_course_path(chosen_course_id: course.id) %> | <%= course.code %> </p>

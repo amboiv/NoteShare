@@ -73,7 +73,8 @@ gem 'amb_view_tool', git: 'https://github.com/amboiv/amb_view_tool'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
-gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+# gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.8'
-gem 'carrierwave-aws', '~> 1.3'
+# gem 'carrierwave-aws', '~> 1.3'
+gem 'aws-sdk-s3', require: false
 
