@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_205455) do
+ActiveRecord::Schema.define(version: 2018_07_24_171513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 2018_07_23_205455) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "course_education_programs", id: false, force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "education_program_id", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -46,12 +51,6 @@ ActiveRecord::Schema.define(version: 2018_07_23_205455) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
-  end
-
-  create_table "courses_education_programs", id: false, force: :cascade do |t|
-    t.bigint "course_id", null: false
-    t.bigint "education_program_id", null: false
-    t.index ["education_program_id", "course_id"], name: "index_courses_eps_on_ep_id_and_course_id"
   end
 
   create_table "education_programs", force: :cascade do |t|

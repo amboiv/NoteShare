@@ -28,6 +28,15 @@
       </div>
     </div>
 
+    <div class="col-md-12">    
+        
+      <div class="form-group">
+        <%= form.label :education_program %>
+        <%= form.collection_select(:education_program_ids, EducationProgram.all, :id, :title) %>
+    </div>
+       
+    </div>
+
     <div class="col-md-12">
       <div class="form-group">
         <%= form.label :description %>

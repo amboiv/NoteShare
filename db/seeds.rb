@@ -10,6 +10,7 @@
 
 number_of_courses = 8
 number_of_notes = 10
+number_of_students = 3
 
 education_program_titles = ["Programmering", "Interaktivt design", "E-business"]
 number_of_education_programs = education_program_titles.length
@@ -24,17 +25,39 @@ end
 puts "#{number_of_education_programs} education program created"
 
 number_of_courses.times do |course|
-    EducationProgram.last.courses.create!(
+    c = Course.create!(
         name: "Course number #{course}",
         code: "STUD#{course}",
         credits: 7.5,
-        description: "This course can be taken at WOACT",
-        main_image: "https://placeholdit.co//i/600x300",
-        thumbnail: "https://placeholdit.co//i/300x150",
+        description: "This course can be taken at WOACT"     
     )
+    c.course_education_programs.create(education_program_id: 1) 
 end
 
 puts "#{number_of_courses} courses created"
+
+puts "#{number_of_courses} course_to_eps created"
+
+number_of_students.times do |student|
+    User.create!(
+        email: "student#{student}@student.com",
+        password: "password",
+        name: "Student #{student}",
+        roles: "student",
+        education_program_id: 1
+    )
+end
+
+puts "#{number_of_students} students created"
+
+User.create!(
+    email: "instructor@instructor.com",
+    password: "password",
+    name: "Instructor Green",
+    roles: "instructor",
+    education_program_id: 1
+)
+puts "Instructor created"
 
 number_of_notes.times do |note|
     Note.create!(
@@ -52,7 +75,8 @@ number_of_notes.times do |note|
             Excepteur sint occaecat cupidatat non 
             proident, sunt in culpa qui officia 
             deserunt mollit anim id est laborum.",
-        course_id: Course.find(Course.pluck(:id).sample).id
+        course_id: Course.find(Course.pluck(:id).sample).id,
+        user_id: User.find(User.pluck(:id).sample).id
     )
 end
 

@@ -80,7 +80,9 @@ class CoursesController < ApplicationController
             :credits, 
             :description,
             :thumbnail,
-            :main_image
+            :main_image,
+            :education_program_ids,
+            education_programs_attributes: [:title, :_destroy]
         )
     end
 

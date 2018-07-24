@@ -19,7 +19,7 @@
 
         <div class="form-group">
           <%= f.label :role %>
-          <%= f.select :role, User.first.available_roles, {}, {prompt: 'Select your role', selected: :prompt, class: "form-control"}  %>
+          <%= f.select(:roles, options_for_select(@user.selectable_roles(), selected: @user.roles), prompt: "Please Select") %>
         </div>  
       </div>
 

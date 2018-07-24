@@ -34,5 +34,9 @@ class User < ApplicationRecord
     
   end
 
+  def selectable_roles
+    roles = [['Instructor', 'instructor'], ['Student', 'student']]
+  end
+
   
 end

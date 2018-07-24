@@ -20,19 +20,6 @@
     <%= form.select :academic_degree, EducationProgram.academic_degrees.keys %>
   </div>
 
-  <ul>
-    <%= form.fields_for :courses do |course_form| %>
-      <li>
-        <%= course_form.label :name %>
-        <%= course_form.text_field :name %>
-        <%= course_form.label :code %>
-        <%= course_form.text_field :code %>
-        <%= course_form.label :credits %>
-        <%= course_form.text_field :credits %>
-      </li>
-    <% end %>
-  </ul>
-
   <div class="actions">
     <%= form.submit %>
   </div>

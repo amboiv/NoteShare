@@ -17,7 +17,6 @@ class EducationProgramsController < ApplicationController
   # GET /education_programs/new
   def new
     @education_program = EducationProgram.new
-    3.times { @education_program.courses.build }
   end
 
   # GET /education_programs/1/edit
@@ -72,6 +71,6 @@ class EducationProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def education_program_params
-      params.require(:education_program).permit(:title, courses_attributes: [:name, :code, :credits, :description])
+      params.require(:education_program).permit(:title, course_ids: [], courses_attributes: [:name, :code, :credits, :description])
     end
 end
