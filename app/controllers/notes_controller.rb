@@ -21,6 +21,9 @@ class NotesController < ApplicationController
   # GET /notes/1
   # GET /notes/1.json
   def show
+    @note = Note.includes(:comments).friendly.find(params[:id])
+    @comment = Comment.new
+
     @page_title = @note.title
     @seo_keywords = @note.body
   end
