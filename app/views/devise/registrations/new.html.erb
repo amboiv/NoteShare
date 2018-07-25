@@ -21,6 +21,10 @@
           <%= f.label :role %>
           <%= f.select(:roles, options_for_select(@user.selectable_roles(), selected: @user.roles), prompt: "Please Select") %>
         </div>  
+        <div class="form-group">
+          <%= f.label :education_program %>
+          <%= f.select(:education_program_id, options_for_select(EducationProgram.all.map{|ep| [ep.title, ep.id]}, selected: @user.education_program_id), prompt: "Please Select") %>
+        </div>  
       </div>
 
       <div class="col-md-6">

@@ -1,20 +1,20 @@
-<p id="notice"><%= notice %></p>
-
 <h2>Education Programs</h2>
+<%= link_to 'Create a new Education Program', new_education_program_path %>
 <hr/>
 
-
-<div>
+<div class="row">
 <% @education_programs.each do |education_program| %>
-    <div>
-    <p><%= education_program.title %></p>
-    <p><%= link_to 'Show', education_program %></p>
-    <p><%= link_to 'Edit', edit_education_program_path(education_program) %></p>
-    <p><%= link_to 'Delete', education_program, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <div class=col-md-12>
+        <%= link_to education_program.title, education_program %>
     </div>
+    <div class="col-md-12">
+        <%= link_to 'Edit', edit_education_program_path(education_program) %> | 
+        <%= link_to 'Delete', education_program, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <hr>
+    </div>
+
+    
 <% end %>
 </div>
-
 <br>
 
-<%= link_to 'Create a new Education Program', new_education_program_path %>

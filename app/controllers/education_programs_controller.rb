@@ -71,6 +71,6 @@ class EducationProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def education_program_params
-      params.require(:education_program).permit(:title, course_ids: [], courses_attributes: [:name, :code, :credits, :description])
+      params.require(:education_program).permit(:title, :academic_degree, course_ids: [], courses_attributes: [:name, :code, :credits, :description])
     end
 end

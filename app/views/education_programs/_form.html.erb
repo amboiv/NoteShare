@@ -11,7 +11,7 @@
   </div>
   <div class="field">
     <%= form.label :academic_degree %>
-    <%= form.select :academic_degree, EducationProgram.academic_degrees.keys %>
+    <%= form.select :academic_degree, EducationProgram.academic_degrees.keys.to_a %>
   </div>
 
   <div class="actions">

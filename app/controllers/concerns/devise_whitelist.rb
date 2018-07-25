@@ -6,7 +6,7 @@ module DeviseWhitelist
     end
 
     def configure_permission_params
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :roles])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :roles])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :roles, :education_program_id])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :roles, :education_program_id])
     end
 end
