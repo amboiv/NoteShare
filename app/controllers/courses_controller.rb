@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
           instructor: :all, student: { except: [:destroy, :new, :create, :edit, :update] }
 
     def index
-        @courses = Course.by_position
+        @courses = Course.joins(:course_education_programs).where(course_education_programs: {education_program_id: current_user.education_program_id})
     end
 
     def sort
