@@ -48,4 +48,15 @@ module ApplicationHelper
         navbar_content.html_safe  
     end
 
+    def alerts
+        alert = (flash[:alert]) || flash[:error] || flash[:notice]
+        if alert
+            alert_generator(alert)
+        end
+    end
+
+    def alert_generator (message)
+        js add_gritter(message, title: "Look here!", sticky: false)
+    end
+
 end

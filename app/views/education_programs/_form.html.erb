@@ -1,7 +1,7 @@
 <%= form_with(model: education_program, local: true) do |form| %>
   <% if education_program.errors.any? %>
     <% education_program.errors.full_messages.each do |error| %>
-      <%= js add_gritter(error, title: "Error!", sticky: false) %>
+      <%= alert_generator(error) %>
     <% end %>
   <% end %>
 
