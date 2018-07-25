@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   devise_for :users, path: '', path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'log_out' }
   resources :education_programs
   resources :courses, except: [:show] do
@@ -22,6 +21,9 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
+  mount ActionCable.server => '/cable'
+  
+
   authenticated :user do
     root 'courses#index', as: :authenticated_root
   end
