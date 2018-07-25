@@ -8,6 +8,8 @@ class Note < ApplicationRecord
     belongs_to :course
     belongs_to :user
 
+    has_many :comments, dependent: :destroy
+
     def self.not_commentable
         where(status: 'cannotComment')
     end

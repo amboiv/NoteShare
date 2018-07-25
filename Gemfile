@@ -23,7 +23,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0', '>= 4.0.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -73,11 +73,12 @@ gem 'amb_view_tool', git: 'https://github.com/amboiv/amb_view_tool'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
-# gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.8'
-# gem 'carrierwave-aws', '~> 1.3'
+
 gem 'aws-sdk-s3', require: false
 
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
+
 gem 'gritter', '~> 1.2'
+
 

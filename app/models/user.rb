@@ -14,8 +14,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :name
-  has_many :notes
   belongs_to :education_program, optional: true
+
+  has_many :notes
+  has_many :comments, dependent: :destroy
   
   def first_name
     self.name.split.first
