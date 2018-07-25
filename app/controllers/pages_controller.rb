@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
+  
   def home
-    @notes = Note.all
-    @courses = Course.all
+
   end
 
   def about
@@ -9,4 +9,6 @@ class PagesController < ApplicationController
 
   def contact
   end
+
+
 end

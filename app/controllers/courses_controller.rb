@@ -2,8 +2,7 @@ class CoursesController < ApplicationController
     before_action :set_course, only: [:show, :edit, :update, :destroy]
     layout "courses"
 
-    access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update, :sort] },
-          instructor: :all, student: { except: [:destroy, :new, :create, :edit, :update] }
+    access instructor: :all, student: { except: [:destroy, :new, :create, :edit, :update] }
 
     def index
         @courses = Course.joins(:course_education_programs).where(course_education_programs: {education_program_id: current_user.education_program_id})
