@@ -80,5 +80,3 @@ gem 'aws-sdk-s3', require: false
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
 gem 'gritter', '~> 1.2'
-
-ruby "2.5.0"
