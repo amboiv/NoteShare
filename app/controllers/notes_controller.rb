@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy, :toggle_status]
+  before_action :set_notes, only: [:index]
   layout "notes"
 
   access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update, :toggle_status] },
@@ -9,9 +10,6 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @page_title = "NoteShare | Notes"
-    #@notes = Note.page(params[:page]).per(10).where(course_id: :chosen_course_id)
-    @notes_course = Course.find(params[:chosen_course_id])
-    @notes = Note.where(course_id: params[:chosen_course_id]).page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def not_commentable
@@ -87,6 +85,25 @@ class NotesController < ApplicationController
   end
 
   private
+    def set_notes
+      get_notes_course
+      @notes = filter_notes.page(params[:page]).per(10).order('updated_at DESC')
+    end
+
+    def filter_notes
+      if @notes_course.present?
+        Note.where(course_id: @notes_course.id)
+      else
+        Note.where(user_id: current_user.id)
+      end
+    end
+
+    def get_notes_course
+      if params[:chosen_course_id]
+        @notes_course = Course.find(params[:chosen_course_id])
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_note
       @note = Note.friendly.find(params[:id])

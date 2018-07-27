@@ -24,20 +24,39 @@ module ApplicationHelper
     end
 
     def navbar_links
-        [
-            {
-                path: root_path,
-                title: 'Home',
-            },
+        links =  [
             {
                 path: courses_path,
                 title: 'My Courses',
             },
             {
-                path: education_programs_path,
-                title: 'Education Programs',
+                path: notes_path,
+                title: 'My Notes',
             },
         ]
+        
+        return links + special_links
+    
+    end
+
+    def special_links
+        if current_user.has_role?(:instructor)
+            return [
+                {
+                    path: education_programs_path,
+                    title: 'Education Programs',
+                },
+            ]
+        elsif current_user.has_role?(:student)
+            return [
+                {
+                    path: edit_user_registration_path,
+                    title: 'Edit profile',
+                },
+            ]
+        else
+            return []
+        end
     end
 
     def navbar_helper (classes, tag_type)

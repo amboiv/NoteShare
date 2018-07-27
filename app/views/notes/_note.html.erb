@@ -3,8 +3,7 @@
     <p class="blog-post-meta">Posted <%= distance_of_time_in_words(note.created_at, Time.now) %> ago, by <%= note.user.name %> </p>
     <p class="blog-post-meta">
         <% if logged_in?(:student, :instructor) && (note.user_id == current_user.id) %>
-            <%= link_to note.status, toggle_status_note_path(note) %>
-            <%= link_to '| Edit | ', edit_note_path(note) %>
+            <%= link_to 'Edit | ', edit_note_path(note) %>
             <%= link_to 'Remove Note', note, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
     </p>

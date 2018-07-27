@@ -1,6 +1,6 @@
 class EducationProgramsController < ApplicationController
   before_action :set_education_program, only: [:show, :edit, :update, :destroy]
-  access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update] },
+  access student: [:show],
           instructor: :all
 
   # GET /education_programs
