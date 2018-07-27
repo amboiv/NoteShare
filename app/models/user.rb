@@ -13,8 +13,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :name
-  belongs_to :education_program, optional: true
+  validates_presence_of :name, :roles, :education_program
+  belongs_to :education_program
 
   has_many :notes
   has_many :comments, dependent: :destroy

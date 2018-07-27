@@ -3,7 +3,7 @@ class Note < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
-    validates_presence_of :title, :body
+    validates_presence_of :title, :body, :user_id, :course_id
 
     belongs_to :course
     belongs_to :user

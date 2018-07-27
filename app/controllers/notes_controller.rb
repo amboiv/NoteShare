@@ -11,7 +11,7 @@ class NotesController < ApplicationController
     @page_title = "NoteShare | Notes"
     #@notes = Note.page(params[:page]).per(10).where(course_id: :chosen_course_id)
     @notes_course = Course.find(params[:chosen_course_id])
-    @notes = Note.where(course_id: params[:chosen_course_id]).page(params[:page]).per(10)
+    @notes = Note.where(course_id: params[:chosen_course_id]).page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def not_commentable
