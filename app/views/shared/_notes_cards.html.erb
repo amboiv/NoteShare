@@ -1,27 +1,25 @@
-<% if @notes_course.present? %>
+
 <div class="row mb-2">        
   <div class="col-md-6">
-    <div class="card flex-md-row mb-4 box-shadow h-md-200">
-      <div class="card-body d-flex flex-column align-items-start">
-        <strong class="d-inline-block mb-2 text-primary"><%= @notes_course.code %></strong>
-        <h3 class="mb-0">
-          <%= link_to 'Post a new note', new_note_path %>
-        </h3>
-        <p class="card-text mb-auto">Add a new note to the collection.</p>
+    <%= link_to new_note_path do %>
+      <div class="card flex-md-row mb-4 box-shadow h-md-200">
+        <div class="card-body d-flex flex-column align-items-start">
+          <h3 class="mb-0">Post a new note</h3>
+          <p class="card-text mb-auto">Add a new note to the collection.</p>
+        </div>
       </div>
-    </div>
+      <% end %>
   </div>
-  
-  <div class="col-md-6">
-    <div class="card flex-md-row mb-4 box-shadow h-md-200">
-      <div class="card-body d-flex flex-column align-items-start">
-        <strong class="d-inline-block mb-2 text-success"><%= @notes_course.code %></strong>
-        <h3 class="mb-0">
-          <%= link_to "#{@notes_course.name}", course_show_path(@notes_course.id) %>
-        </h3>
-        <p class="card-text mb-auto">See curriculum.</p>
-      </div>
+  <% if @notes_course.present? %>
+    <div class="col-md-6">
+      <%= link_to course_show_path(@notes_course.id) do %>
+        <div class="card flex-md-row mb-4 box-shadow h-md-200">
+          <div class="card-body d-flex flex-column align-items-start">
+            <h3 class="mb-0"><%= @notes_course.name %></h3>
+            <p class="card-text mb-auto">See curriculum.</p>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
+  <% end %>
 </div> <!-- /.cards -->
-<% end %>
