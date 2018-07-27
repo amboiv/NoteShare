@@ -4,7 +4,8 @@ module ApplicationHelper
             (link_to "Register", new_user_registration_path, class: classes_string + " " + is_active?(new_user_registration_path)) + " " +
             (link_to "Login", new_user_session_path, class: classes_string + " " + is_active?(new_user_session_path))
         else
-            link_to "Log out", destroy_user_session_path, class: classes_string, method: :delete
+            (link_to "Edit profile", edit_user_registration_path, class: classes_string + " " + is_active?(edit_user_registration_path)) + " " +
+            (link_to "Log out", destroy_user_session_path, class: classes_string, method: :delete)
         end
     end
 
@@ -49,10 +50,7 @@ module ApplicationHelper
             ]
         elsif current_user.has_role?(:student)
             return [
-                {
-                    path: edit_user_registration_path,
-                    title: 'Edit profile',
-                },
+              
             ]
         else
             return []
