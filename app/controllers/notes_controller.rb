@@ -3,8 +3,7 @@ class NotesController < ApplicationController
   before_action :set_notes, only: [:index]
   layout "notes"
 
-  access all: [:show, :index], user: { except: [:destroy, :new, :create, :edit, :update, :toggle_status] },
-          student: :all, instructor: :all
+  access student: :all, instructor: :all
 
   # GET /notes
   # GET /notes.json
