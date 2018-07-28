@@ -11,4 +11,15 @@ module NotesHelper
             "My Notes"
         end
     end
+
+    def filter_lectures(note)
+        course_id = 0;
+        
+        if session[:current_course]
+            course_id = session[:current_course]
+        else
+            course_id = note.course_id    
+        end
+        Lecture.where(course_id: course_id) 
+    end
 end

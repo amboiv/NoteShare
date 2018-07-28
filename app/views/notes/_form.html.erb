@@ -11,8 +11,8 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :course %>
-    <%= collection_select(:note, :course_id, Course.all, :id, :name, {}, {class: "form-control"}) %>
+    <%= form.label :lecture_id %>
+    <%= form.collection_select(:lecture_id, filter_lectures(note), :id, :title, {selected: note.lecture_id, include_blank: true}, {class: "form-control"}) %>
   </div>
 
   <div class="form-group">
@@ -22,6 +22,7 @@
   <div class="form-group">
   
     <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+    <%= form.hidden_field :course_id, value: note.course_id || session[:current_course], class: "form-control" %>
   </div>
 
   <div class="form-group">

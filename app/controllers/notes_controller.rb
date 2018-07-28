@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy, :toggle_status]
-  before_action :set_notes, only: [:index]
+  include SetCurrentCourse
   layout "notes"
 
   access student: :all, instructor: :all
@@ -9,6 +9,15 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @page_title = "NoteShare | Notes"
+    if check_course
+      @notes = Note.where(course_id: @notes_course.id).paginate_notes(params[:page])
+    else
+      redirect_to my_notes_path
+    end
+  end
+
+  def my_notes
+    @notes = Note.where(user_id: current_user.id).paginate_notes(params[:page])
   end
 
   def not_commentable
@@ -27,7 +36,11 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    if check_course
+      @note = Note.new
+    else
+      redirect_to courses_path, notice: 'Please select a course for your note.'
+    end
   end
 
   # GET /notes/1/edit
@@ -69,7 +82,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
+      format.html { redirect_to notes_url, notice: 'Note was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -84,23 +97,10 @@ class NotesController < ApplicationController
   end
 
   private
-    def set_notes
-      get_notes_course
-      @notes = filter_notes.page(params[:page]).per(10).order('updated_at DESC')
-    end
 
-    def filter_notes
-      if @notes_course.present?
-        Note.where(course_id: @notes_course.id)
-      else
-        Note.where(user_id: current_user.id)
-      end
-    end
-
-    def get_notes_course
-      if params[:chosen_course_id]
-        @notes_course = Course.find(params[:chosen_course_id])
-      end
+    def check_course
+      session[:current_course].present?
+      #Note.where(user_id: current_user.id)
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -111,7 +111,7 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :body, :course_id, :user_id)
+      params.require(:note).permit(:title, :body, :course_id, :user_id, :lecture_id)
     end
 
 

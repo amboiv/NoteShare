@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
   get 'notes', to: 'notes#index', as: 'notes_in_course'
+  get 'my_notes', to: 'notes#my_notes', as: 'my_notes'
   get 'not_commentable', to: 'notes#not_commentable'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
