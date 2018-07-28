@@ -3,10 +3,11 @@ class Note < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
-    validates_presence_of :title, :body, :user_id, :course_id
+    validates_presence_of :title, :body, :user_id, :course_id, :lecture_id
 
     belongs_to :course
     belongs_to :user
+    belongs_to :lecture
 
     has_many :comments, dependent: :destroy
 
@@ -16,6 +17,10 @@ class Note < ApplicationRecord
 
     def self.featured_notes
         limit(2)
+    end
+
+    def self.paginate_notes(page)
+        page(page).per(10).order('updated_at DESC')
     end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_113813) do
+ActiveRecord::Schema.define(version: 2018_07_28_095617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 2018_07_25_113813) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "lectures", force: :cascade do |t|
+    t.string "title"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_lectures_on_course_id"
+  end
+
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -92,7 +101,9 @@ ActiveRecord::Schema.define(version: 2018_07_25_113813) do
     t.integer "status", default: 0
     t.bigint "course_id"
     t.bigint "user_id"
+    t.bigint "lecture_id"
     t.index ["course_id"], name: "index_notes_on_course_id"
+    t.index ["lecture_id"], name: "index_notes_on_lecture_id"
     t.index ["slug"], name: "index_notes_on_slug", unique: true
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
@@ -120,7 +131,9 @@ ActiveRecord::Schema.define(version: 2018_07_25_113813) do
 
   add_foreign_key "comments", "notes"
   add_foreign_key "comments", "users"
+  add_foreign_key "lectures", "courses"
   add_foreign_key "notes", "courses"
+  add_foreign_key "notes", "lectures"
   add_foreign_key "notes", "users"
   add_foreign_key "users", "education_programs"
 end

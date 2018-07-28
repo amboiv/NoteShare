@@ -8,8 +8,9 @@
 
 
 
-number_of_courses = 8
-number_of_notes = 10
+number_of_courses = 6
+number_of_notes = 30
+number_of_lectures = 12
 number_of_students = 3
 
 education_program_titles = ["Programmering", "Interaktivt design", "E-business"]
@@ -29,7 +30,7 @@ number_of_courses.times do |course|
         name: "Course number #{course}",
         code: "STUD#{course}",
         credits: 7.5,
-        description: "This course can be taken at WOACT"     
+        description: "This course can be taken at WOACT \n Curriculum: - Lorem ipsum"     
     )
     c.course_education_programs.create(education_program_id: 1) 
 end
@@ -59,6 +60,18 @@ User.create!(
 )
 puts "Instructor created"
 
+number_of_courses.times do |course|
+    number_of_lectures.times do |lecture|
+        Lecture.create!(
+            title: "lecture #{lecture + 1 }",
+            date: (7 * lecture).days.from_now,
+            course_id: Course.find(course + 1).id        
+        )
+    end
+end
+
+puts "#{number_of_lectures} lectures in each course created"
+
 number_of_notes.times do |note|
     Note.create!(
         title: "Note from lecture at #{Date.current}",
@@ -76,7 +89,8 @@ number_of_notes.times do |note|
             proident, sunt in culpa qui officia 
             deserunt mollit anim id est laborum.",
         course_id: Course.find(Course.pluck(:id).sample).id,
-        user_id: User.find(User.pluck(:id).sample).id
+        user_id: User.find(User.pluck(:id).sample).id,
+        lecture_id: Lecture.find(Lecture.pluck(:id).sample).id
     )
 end
 
