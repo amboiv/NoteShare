@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
+  mount ActionCable.server => '/cable'
   get ':id', to: 'courses#show', as: 'course_show'
   
 
@@ -43,7 +44,7 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  mount ActionCable.server => '/cable'
+  
   
 
  
