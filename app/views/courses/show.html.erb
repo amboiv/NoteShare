@@ -11,7 +11,7 @@
             <em><strong>Course Credits:</strong> <%= @course.credits %></em>
             <hr>
             <p><%= @course.description %></p>
-            <%= link_to 'To Notes', notes_in_course_path(course: @course.id) %>
+            <%= link_to 'To Notes', course_notes_path(@course.slug) %>
         </div>
     </div>
 </div>

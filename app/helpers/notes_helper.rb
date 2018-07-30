@@ -5,8 +5,8 @@ module NotesHelper
     end
 
     def show_main_title
-        if @notes_course.present?
-            @notes_course.name
+        if params[:course_id]
+            (params[:course_id]).titleize 
         else
             "My Notes"
         end
@@ -15,8 +15,8 @@ module NotesHelper
     def filter_lectures(note)
         course_id = 0;
         
-        if session[:current_course]
-            course_id = session[:current_course]
+        if params[:course_id]
+            course_id = Course.friendly.find(params[:course_id]).id
         else
             course_id = note.course_id    
         end

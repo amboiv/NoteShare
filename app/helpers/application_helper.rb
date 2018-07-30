@@ -31,7 +31,7 @@ module ApplicationHelper
                 title: 'My Courses',
             },
             {
-                path: notes_path,
+                path: my_notes_path,
                 title: 'My Notes',
             },
         ]

@@ -1,6 +1,9 @@
 class Course < ApplicationRecord
     validates_presence_of :name, :code, :credits
 
+    extend FriendlyId
+    friendly_id :name, use: :slugged
+
     has_many :notes
     has_many :lectures
     has_many :course_education_programs

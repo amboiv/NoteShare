@@ -1,0 +1,19 @@
+<h3 class=" col-md-12 border-bottom">
+  <%= show_main_title %> 
+</h3>
+
+<div class="col-md-8">
+    <%= render 'shared/notes_cards' if params[:course_id] %>
+</div>
+<div class="col-md-4">
+    <%= render 'shared/notes_sidebar' %>
+</div>
+
+ 
+<div class="col-md-8 blog-main">
+  <%= paginate @notes %> 
+
+  <%= render @notes %> 
+
+  <%= paginate @notes %> 
+</div>

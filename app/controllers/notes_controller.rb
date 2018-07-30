@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy, :toggle_status]
-  include SetCurrentCourse
+  #include SetCurrentCourse
   layout "notes"
 
   access student: :all, instructor: :all
@@ -9,11 +9,12 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @page_title = "NoteShare | Notes"
-    if check_course
-      @notes = Note.where(course_id: @notes_course.id).paginate_notes(params[:page])
-    else
-      redirect_to my_notes_path
-    end
+    # if check_course
+      cc = Course.friendly.find(params[:course_id])
+      @notes = Note.where(course_id: cc.id).paginate_notes(params[:page])
+    # else
+    #   redirect_to my_notes_path
+    # end
   end
 
   def my_notes
@@ -38,6 +39,8 @@ class NotesController < ApplicationController
   def new
     if check_course
       @note = Note.new
+      @course = Course.find_by(slug: params[:course_id])
+      #@course_id = Course.find_by(slug: params[:course_id]).id
     else
       redirect_to courses_path, notice: 'Please select a course for your note.'
     end
@@ -45,6 +48,7 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
+    @course = @note.course
   end
 
   # POST /notes
@@ -54,7 +58,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to course_notes_path(params[:course_id]), notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
       else
         format.html { render :new }
@@ -68,7 +72,7 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.html { redirect_to my_notes_path, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
       else
         format.html { render :edit }
@@ -82,7 +86,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: 'Note was successfully deleted.' }
+      format.html { redirect_to course_notes_url(@note.course.slug), notice: 'Note was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -93,13 +97,13 @@ class NotesController < ApplicationController
     elsif @note.canComment?
       @note.cannotComment!
     end
-    redirect_to notes_url, notice: 'Note status has been changed to: ' + @note.status
+    redirect_to course_notes_url(@note.course.slug), notice: 'Note status has been changed to: ' + @note.status
   end
 
   private
 
     def check_course
-      session[:current_course].present?
+      params[:course_id].present?
       #Note.where(user_id: current_user.id)
     end
 

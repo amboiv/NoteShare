@@ -1,4 +1,4 @@
-<%= form_with(model: note, local: true) do |form| %>
+<%= form_with(model: note, url: (@note.new_record? ? [@course, @note] : @note), local: true) do |form| %>
   <% if note.errors.any? %>
     <% note.errors.full_messages.each do |error| %>
       <%= alert_generator(error) %>
@@ -22,7 +22,7 @@
   <div class="form-group">
   
     <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
-    <%= form.hidden_field :course_id, value: note.course_id || session[:current_course], class: "form-control" %>
+    <%= form.hidden_field :course_id, value: @course.id, class: "form-control" %>
   </div>
 
   <div class="form-group">
