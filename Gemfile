@@ -80,3 +80,5 @@ gem 'aws-sdk-s3', require: false
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
 gem 'gritter', '~> 1.2'
+gem 'redcarpet', '~> 3.4'
+gem 'coderay', '~> 1.1', '>= 1.1.2'

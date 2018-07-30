@@ -7,7 +7,7 @@
     <%= @note.lecture.title %>
   </p>
   <p>
-    <%= @note.body %>
+    <%= markdown(@note.body) %>
   </p>
 
   <%= render 'comments/comment_form' %>
