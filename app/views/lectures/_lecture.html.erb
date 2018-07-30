@@ -1,1 +1,1 @@
-<li><%= link_to lecture.title, lecture_path(lecture) %></li>
+<li><%= link_to lecture.title, course_lecture_path(@course.slug, lecture.slug) %></li>

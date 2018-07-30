@@ -10,8 +10,9 @@ class NotesController < ApplicationController
   def index
     @page_title = "NoteShare | Notes"
     # if check_course
-      current_course = Course.friendly.find(params[:course_id])
-      @notes = Note.where(course_id: current_course.id).paginate_notes(params[:page])
+      @course = Course.friendly.find(params[:course_id])
+      @notes = Note.where(course_id: @course.id).paginate_notes(params[:page])
+      @lectures = Lecture.where(course_id: @course)
     # else
     #   redirect_to my_notes_path
     # end
