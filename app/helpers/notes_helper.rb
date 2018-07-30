@@ -5,7 +5,9 @@ module NotesHelper
     end
 
     def show_main_title
-        if params[:course_id]
+        if @lecture
+            @lecture.title.titleize
+        elsif params[:course_id]
             (params[:course_id]).titleize 
         else
             "My Notes"

@@ -1,3 +1,6 @@
 <aside class="blog-sidebar">
-   params: <%= params[:course_id]  %>
+    <h4 class="font-italic">Lectures</h4>
+    <div class="list-unstyled mb-0">
+      <%= render @lectures, partial: 'lectures/lecture'  %>
+    </div>
 </aside>

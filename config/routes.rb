@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :lectures, only: [:index]
+  #resources :lectures, only: [:index]
   devise_for :users, path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'log_out' }
   resources :education_programs
 
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :courses, path: '', except: [:show] do
     put :sort, on: :collection
     resources :notes, shallow: true
+    resources :lectures, only: [:index, :show]
   end
   
   get 'notes', to: 'notes#my_notes', as: 'my_notes'
