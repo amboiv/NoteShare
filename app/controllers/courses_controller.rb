@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
     before_action :set_course, only: [:show, :edit, :update, :destroy]
+    after_action :auto_generate_lectures, only: [:create]
     layout "courses"
 
     access instructor: :all, student: { except: [:destroy, :new, :create, :edit, :update] }
@@ -83,6 +84,12 @@ class CoursesController < ApplicationController
             :education_program_ids,
             education_programs_attributes: [:title, :_destroy]
         )
+    end
+
+    def auto_generate_lectures
+        12.times do |lecture|
+            Lecture.create!(title: "Lecture #{lecture + 1}", date: ((lecture * 7).days.from_now), course_id: @course.id)
+        end
     end
 
 end
